@@ -25,7 +25,7 @@ Jellyfin Stremio addon should be installed in your local docker environment. To 
 
 `docker pull ghcr.io/akarazniewicz/stremio-jellyfin:latest`
 
-and then run it:
+## Docker
 
 `docker run -p 60421:60421 -e JELLYFIN_USER="<your jellyfin username>" -e JELLYFIN_PASSWORD="<your jellyfin user password>" -e JELLYFIN_SERVER="<your jellyfin server address>" ghcr.io/akarazniewicz/stremio-jellyfin"`
 
@@ -35,7 +35,8 @@ where:
 * `<your jellyfin user password>` - Jellyfin password
 * `<your jellyfin server address>` - Jellyfin server address and port (`http://aaa.bbb.ccc.ddd:eee`). Make sure Jellyfin is connectable.
 
-  Alternatively, for [docker compose](https://docs.docker.com/compose/), with accompanying [.env](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file) file:
+## [Docker Compose](https://docs.docker.com/compose/)
+Create your [compose.yaml](https://docs.docker.com/reference/compose-file/) file:
 ```
 services:
   stremio-jellyfin:
@@ -48,7 +49,16 @@ services:
       - JELLYFIN_SERVER=${JELLYFIN_SERVER}
     restart: unless-stopped
 ```
+Then make a [.env](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file) to define the variables:
+```
+JELLYFIN_USER=<your jellyfin username>
+JELLYFIN_PASSWORD=<your jellyfin user password>
+JELLYFIN_SERVER=<your jellyfin server address>
+```
+Finally:
+`docker compose up -d`
 
+## Other container options
 You can run it in Your docker orchestrator too (like Rancher or Unraid).
 
 Finally, add the manifest to Stremio to install this addon:
