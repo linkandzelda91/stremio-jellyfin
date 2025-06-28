@@ -33,7 +33,6 @@ or docker compose:
 ```
 services:
   stremio-jellyfin:
-    container_name: stremio
     image: ghcr.io/akarazniewicz/stremio-jellyfin:latest
     ports:
       - 60421:60421/tcp
