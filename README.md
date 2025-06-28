@@ -29,7 +29,13 @@ and then run it:
 
 `docker run -p 60421:60421 -e JELLYFIN_USER="<your jellyfin username>" -e JELLYFIN_PASSWORD="<your jellyfin user password>" -e JELLYFIN_SERVER="<your jellyfin server address>" ghcr.io/akarazniewicz/stremio-jellyfin"`
 
-Alternatively, for [docker compose](https://docs.docker.com/compose/), with accompanying [.env](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file) file:
+where:
+* `60421` - is standard port addon is running on (You may remap it in docker)
+* `<your jellyfin username>` - Jellyfin username
+* `<your jellyfin user password>` - Jellyfin password
+* `<your jellyfin server address>` - Jellyfin server address and port (`http://aaa.bbb.ccc.ddd:eee`). Make sure Jellyfin is connectable.
+
+  Alternatively, for [docker compose](https://docs.docker.com/compose/), with accompanying [.env](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/#env-file) file:
 ```
 services:
   stremio-jellyfin:
@@ -42,12 +48,6 @@ services:
       - JELLYFIN_SERVER=${JELLYFIN_SERVER}
     restart: unless-stopped
 ```
-
-where:
-* `60421` - is standard port addon is running on (You may remap it in docker)
-* `<your jellyfin username>` - Jellyfin username
-* `<your jellyfin user password>` - Jellyfin password
-* `<your jellyfin server address>` - Jellyfin server address and port (`http://aaa.bbb.ccc.ddd:eee`). Make sure Jellyfin is connectable.
 
 You can run it in Your docker orchestrator too (like Rancher or Unraid).
 
